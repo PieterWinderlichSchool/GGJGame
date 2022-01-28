@@ -25,5 +25,21 @@ public class Movement : MonoBehaviour
 
         //rigidBody.AddForce(movementDirection.normalized * movementSpeed * Time.deltaTime, ForceMode2D.Force);
         rigidBody.velocity = movementDirection.normalized * movementSpeed;
+
+        PlayerRotation();
+    }
+
+    void PlayerRotation()
+	{
+
+        Vector3 diff = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
+        diff.Normalize();
+
+        float rot_z = Mathf.Atan2(diff.y, diff.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.Euler(0f, 0f, rot_z - 90);
+
+        //RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
+        //
+        //transform.LookAt(hit.transform.position);
     }
 }
