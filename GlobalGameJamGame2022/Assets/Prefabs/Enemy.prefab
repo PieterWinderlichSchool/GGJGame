@@ -83,7 +83,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 2bc59bf1f300bdd42a25ba9aaa2a1f42, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -285,6 +285,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5989376563823514262, guid: 868fa1a9d32406445ac190bea14827b7, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8635859007594282970, guid: 868fa1a9d32406445ac190bea14827b7, type: 3}
       propertyPath: m_Name
       value: Circle (2)
@@ -355,6 +359,10 @@ PrefabInstance:
     - target: {fileID: 279713565006633669, guid: 868fa1a9d32406445ac190bea14827b7, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5989376563823514262, guid: 868fa1a9d32406445ac190bea14827b7, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8635859007594282970, guid: 868fa1a9d32406445ac190bea14827b7, type: 3}
       propertyPath: m_Name
@@ -427,6 +435,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5989376563823514262, guid: 868fa1a9d32406445ac190bea14827b7, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8635859007594282970, guid: 868fa1a9d32406445ac190bea14827b7, type: 3}
       propertyPath: m_Name
       value: Circle (1)
@@ -498,6 +510,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5989376563823514262, guid: 868fa1a9d32406445ac190bea14827b7, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8635859007594282970, guid: 868fa1a9d32406445ac190bea14827b7, type: 3}
       propertyPath: m_Name
       value: Circle
@@ -568,6 +584,10 @@ PrefabInstance:
     - target: {fileID: 279713565006633669, guid: 868fa1a9d32406445ac190bea14827b7, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5989376563823514262, guid: 868fa1a9d32406445ac190bea14827b7, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8635859007594282970, guid: 868fa1a9d32406445ac190bea14827b7, type: 3}
       propertyPath: m_Name
