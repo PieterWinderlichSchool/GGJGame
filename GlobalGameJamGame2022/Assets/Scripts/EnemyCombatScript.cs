@@ -10,6 +10,8 @@ public class EnemyCombatScript : MonoBehaviour
     public List<GameObject> projectileList;
 
     public GameObject player;
+
+    public Coroutine routine;
 	// Start is called before the first frame update
 
 	private void Start()
@@ -30,8 +32,8 @@ public class EnemyCombatScript : MonoBehaviour
 
             projectileList[index].SetActive(true);
             EnemyProjectileBehaviour enemyBullet = projectileList[index].GetComponent<EnemyProjectileBehaviour>();
-            enemyBullet.StartCoroutine(enemyBullet.MoveProjectile(player));
-          
+            enemyBullet.thisRoutine = enemyBullet.StartCoroutine(enemyBullet.MoveProjectile(player));
+           
             index++;
             yield return new WaitForSeconds(FireSpeed); 
         }

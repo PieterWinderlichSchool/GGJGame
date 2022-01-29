@@ -47,10 +47,10 @@ public class MovementAI : MonoBehaviour
         
     }
 
-    public IEnumerator Combat()
+    public void Combat()
     {
-        StartCoroutine(cScript.ShootProjectile());
-        yield return new WaitForSeconds(0.1f);
+       cScript.routine =  StartCoroutine(cScript.ShootProjectile());
+        
     }
 
     public IEnumerator Chasing()
@@ -65,17 +65,13 @@ public class MovementAI : MonoBehaviour
                 SetNewState(States.combat);
                 yield break;
             }
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(0.05f);
 
         }
         
     }
 
-    public void InvertSpeed()
-    {
-        SRenderer.flipX = !SRenderer.flipX;
-        Speed *= -1;
-    }
+    
 
     public Vector3 chooseDirection()
     {
@@ -128,18 +124,32 @@ public class MovementAI : MonoBehaviour
 
         if (other.CompareTag("Player"))
         {
-            //SRenderer.flipX = !SRenderer.flipX;
-            StopCoroutine(cScript.ShootProjectile());
+
+
             SetNewState(States.Patrolling);
         }
+    }
+    public void InvertSpeed()
+    {
+        SRenderer.flipX = !SRenderer.flipX;
+        Speed *= -1;
     }
 
     private void SetNewState(States newState)
     {
         if(currentRoutine != null)
 		{
+            //Debug.Log(currentRoutine);
             StopCoroutine(currentRoutine);
+           
+            
         }
+
+        if (cScript.routine != null)
+        {
+            StopCoroutine(cScript.routine);
+        }
+
 
         switch (newState)
         {
@@ -154,7 +164,7 @@ public class MovementAI : MonoBehaviour
                
                 break;
             case States.combat :
-                currentRoutine =   StartCoroutine(Combat());
+                Combat();
                 enemyStates = newState;
            
                 break;
