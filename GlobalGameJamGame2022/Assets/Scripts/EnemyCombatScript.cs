@@ -10,10 +10,13 @@ public class EnemyCombatScript : MonoBehaviour
     public List<GameObject> projectileList;
 
     public GameObject player;
-    // Start is called before the first frame update
+	// Start is called before the first frame update
 
-
-    public IEnumerator ShootProjectile()
+	private void Start()
+	{
+        player = Movement.Player.gameObject;
+	}
+	public IEnumerator ShootProjectile()
     {
         
         int index = 0;
