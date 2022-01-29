@@ -21,7 +21,7 @@ public class MovementAI : MonoBehaviour
 
     public Coroutine currentRoutine;
     public SpriteRenderer SRenderer;
-
+    public EnemyCombatScript cScript;
     private GameObject player;
     // Start is called before the first frame update
     void Start()
@@ -49,6 +49,7 @@ public class MovementAI : MonoBehaviour
 
     public IEnumerator Combat()
     {
+        StartCoroutine(cScript.ShootProjectile());
         yield return new WaitForSeconds(0.1f);
     }
 
@@ -57,7 +58,7 @@ public class MovementAI : MonoBehaviour
         while (true)
         {
             
-            Debug.Log(Speed *10 * Time.deltaTime);
+            
             transform.position = Vector3.MoveTowards(transform.position,player.transform.position, chaseSpeed * 250 * Time.deltaTime);
             
             
@@ -119,6 +120,7 @@ public class MovementAI : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+           
             player = other.gameObject;
             SetNewState(States.chasing);
         }
@@ -129,6 +131,8 @@ public class MovementAI : MonoBehaviour
 
         if (other.CompareTag("Player"))
         {
+            //SRenderer.flipX = !SRenderer.flipX;
+            StopCoroutine(cScript.ShootProjectile());
             SetNewState(States.Patrolling);
         }
     }
