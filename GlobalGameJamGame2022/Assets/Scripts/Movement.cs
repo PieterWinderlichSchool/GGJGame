@@ -10,14 +10,26 @@ public class Movement : MonoBehaviour
     private float verticalMovement = 0f;
     private Vector2 movementDirection;
     [SerializeField] private float movementSpeed;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] private GameObject Sword;
+    [SerializeField] private CombatRangedScript gunScript;
 
     void FixedUpdate()
     {
+        float scroll = Input.GetAxis("Mouse ScrollWheel");
+
+        if(scroll >= 0.1f)
+		{
+            Sword.SetActive(false);
+            gunScript.enabled = true;
+            //Enable Gun
+        }
+        else if(scroll <= -0.1f)
+		{
+            Sword.SetActive(true);
+            gunScript.enabled = false;
+            //Enable sword
+        }
+
         horizontalMovement = Input.GetAxisRaw("Horizontal");
         verticalMovement = Input.GetAxisRaw("Vertical");
 
