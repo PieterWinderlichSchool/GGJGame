@@ -34,7 +34,7 @@ public class CombatRangedScript : MonoBehaviour
 			if (!bullets[i].gameObject.activeInHierarchy)
 			{
 				bullets[i].gameObject.SetActive(true);
-				bullets[i].transform.position = transform.position;
+				bullets[i].transform.position = rotationObject.position;
 				bullets[i].transform.eulerAngles = rotationObject.eulerAngles;
 				//StartCoroutine(bullets[i].MoveProjectile(ProjectileSpeedInterval));
 				break;
