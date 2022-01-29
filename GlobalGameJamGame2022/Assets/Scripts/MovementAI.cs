@@ -57,10 +57,7 @@ public class MovementAI : MonoBehaviour
     {
         while (true)
         {
-            
-            
-            transform.position = Vector3.MoveTowards(transform.position,player.transform.position, chaseSpeed * 250 * Time.deltaTime);
-            
+            transform.position = Vector3.MoveTowards(transform.position,player.transform.position, chaseSpeed * Time.deltaTime);
             
             if (Vector3.Distance(transform.position, player.transform.position) <= 3f)
             {
@@ -68,7 +65,7 @@ public class MovementAI : MonoBehaviour
                 SetNewState(States.combat);
                 yield break;
             }
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSeconds(0.5f);
 
         }
         
@@ -139,8 +136,11 @@ public class MovementAI : MonoBehaviour
 
     private void SetNewState(States newState)
     {
-        StopCoroutine(currentRoutine);
-        
+        if(currentRoutine != null)
+		{
+            StopCoroutine(currentRoutine);
+        }
+
         switch (newState)
         {
             case  States.Patrolling:
