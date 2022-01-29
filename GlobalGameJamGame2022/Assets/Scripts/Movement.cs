@@ -13,6 +13,7 @@ public class Movement : MonoBehaviour
     [SerializeField] private Transform objectToRotate;
     [SerializeField] private GameObject Sword;
     [SerializeField] private CombatRangedScript gunScript;
+    [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private float currentHealth;
 
 
@@ -35,6 +36,15 @@ public class Movement : MonoBehaviour
 
         horizontalMovement = Input.GetAxisRaw("Horizontal");
         verticalMovement = Input.GetAxisRaw("Vertical");
+
+        if(horizontalMovement < 0)
+		{
+            spriteRenderer.flipX = false;
+		}
+        else if(horizontalMovement > 0)
+		{
+            spriteRenderer.flipX = true;
+        }
 
         movementDirection = new Vector2(horizontalMovement, verticalMovement);
 
