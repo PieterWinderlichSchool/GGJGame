@@ -4,16 +4,21 @@ using UnityEngine;
 
 public class CoinCollectible : MonoBehaviour
 {
-    [SerializeField] UICoins coins;
+    [SerializeField] Coins coins;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Movement controller = collision.GetComponent<Movement>();
-
-        if (controller != null)
+        //Movement controller = collision.GetComponent<Movement>();
+        if(collision.CompareTag("Player"))
         {
+            Debug.Log("fakka neef" + gameObject.name);
             coins.changeCoins(1);
-            Destroy(gameObject);
-        }    
+            gameObject.SetActive(false);
+            //Destroy(gameObject);
+
+        }
+        //if (controller != null)
+        //{
+        //     }    
     }
 }

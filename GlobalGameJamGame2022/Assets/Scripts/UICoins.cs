@@ -6,12 +6,7 @@ using UnityEngine.UI;
 public class UICoins : MonoBehaviour
 {
     Text coinCount;
-    public int coinAmount = 0;
-
-    public void changeCoins(int amount)
-    {
-        coinAmount += amount;
-    }
+    public Coins coins;
 
     void Start()
     {
@@ -20,6 +15,6 @@ public class UICoins : MonoBehaviour
 
     void Update()
     {
-        coinCount.text = coinAmount.ToString();
+        coinCount.text = coins.coinAmount.ToString();
     }
 }
