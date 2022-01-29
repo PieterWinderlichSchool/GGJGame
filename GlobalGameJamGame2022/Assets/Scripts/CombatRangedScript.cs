@@ -15,7 +15,7 @@ public class CombatRangedScript : MonoBehaviour
 	public GameObject projectileToFire;
 
 	[SerializeField] private List<BulletBehaviour> bullets;
-
+	[SerializeField] private Transform rotationObject;
 	[SerializeField] private bool canShoot = true;
 
 	private void Update()
@@ -53,8 +53,8 @@ public class CombatRangedScript : MonoBehaviour
 			{
 				bullets[i].gameObject.SetActive(true);
 				bullets[i].transform.position = transform.position;
-				bullets[i].transform.eulerAngles = transform.eulerAngles;
-				StartCoroutine(bullets[i].MoveProjectile(ProjectileSpeedInterval));
+				bullets[i].transform.eulerAngles = rotationObject.eulerAngles;
+				//StartCoroutine(bullets[i].MoveProjectile(ProjectileSpeedInterval));
 				break;
 			}
 		}
