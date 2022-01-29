@@ -11,49 +11,50 @@ public class ModeSwitch : MonoBehaviour
     [SerializeField] private Light2D globalLight;
     [SerializeField] private Color HellTorchColor;
     [SerializeField] private Color HeavenTorchColor;
-    [SerializeField] private GameObject HellLightning;
-    [SerializeField] private GameObject HeavenLightning;
+    [SerializeField] private List<GameObject> HellObjects = new List<GameObject>();
+    [SerializeField] private List<GameObject> HeavenObjects = new List<GameObject>();
     [SerializeField] private PostProcessVolume Volume;
-    private ColorGrading cG;
-    void Start()
-    {
-        //Volume.profile.TryGetSettings(out cG);
-    }
+    private bool isHell = true;
 
-    // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.E))
-		{
-            SwitchToHeaven();
-            //cG.colorFilter.value = Color.red;
-        }
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            SwitchToHell();
-            //cG.colorFilter.value = Color.white;
+            if(isHell)
+			{
+                SwitchToHeaven();
+            }
+            else
+			{
+                SwitchToHell();
+            }
+            isHell = !isHell;
         }
     }
 
     public void SwitchToHell()
 	{
-		//for (int i = 0; i < torches.Count; i++)
-		//{
-        //    torches[i].color = HellTorchColor;
-		//}
-        HellLightning.SetActive(true);
-        HeavenLightning.SetActive(false);
+		for (int i = 0; i < HellObjects.Count; i++)
+		{
+            HellObjects[i].SetActive(true);
+        }
+        for (int i = 0; i < HeavenObjects.Count; i++)
+        {
+            HeavenObjects[i].SetActive(false);
+        }
         globalLight.intensity = 0.7f;
 	}
 
     public void SwitchToHeaven()
 	{
-        //for (int i = 0; i < torches.Count; i++)
-        //{
-        //    torches[i].color = HellTorchColor;
-        //}
-        HellLightning.SetActive(false);
-        HeavenLightning.SetActive(true);
+        for (int i = 0; i < HellObjects.Count; i++)
+        {
+            HellObjects[i].SetActive(false);
+        }
+        for (int i = 0; i < HeavenObjects.Count; i++)
+        {
+            HeavenObjects[i].SetActive(true);
+        }
         globalLight.intensity = 1.3f;
     }
 }

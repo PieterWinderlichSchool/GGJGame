@@ -15,6 +15,7 @@ public class Movement : MonoBehaviour
 	[SerializeField] private GameObject Sword;
 	[SerializeField] private CombatRangedScript gunScript;
 	[SerializeField] private SpriteRenderer spriteRenderer;
+	[SerializeField] private Animator animator;
 	[SerializeField] private float currentHealth;
 	[SerializeField] private float maxHealth;
 	[SerializeField] private List<Image> hearthImages = new List<Image>();
@@ -48,6 +49,15 @@ public class Movement : MonoBehaviour
 	{
 		horizontalMovement = Input.GetAxisRaw("Horizontal");
 		verticalMovement = Input.GetAxisRaw("Vertical");
+
+		if(horizontalMovement != 0 || verticalMovement != 0)
+		{
+			animator.SetBool("isWalking", true);
+		}
+		else if(horizontalMovement == 0 && verticalMovement == 0)
+		{
+			animator.SetBool("isWalking", false);
+		}
 
 		if (horizontalMovement < 0)
 		{

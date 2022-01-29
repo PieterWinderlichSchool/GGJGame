@@ -499,13 +499,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rigidBody: {fileID: 8213043182228220105}
   movementSpeed: 5
-  objectToRotate: {fileID: 8213043181752822397}
+  objectToRotate:
+  - {fileID: 0}
+  - {fileID: 8213043181752822397}
   Sword: {fileID: 8213043180288282702}
   gunScript: {fileID: 8213043182228220106}
   spriteRenderer: {fileID: 8213043182228220111}
+  animator: {fileID: 8213043182228220109}
   currentHealth: 3
-  maxHealth: 0
-  hearthImages: []
+  maxHealth: 3
+  hearthImages:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  shooterDrone: {fileID: 0}
 --- !u!50 &8213043182228220105
 Rigidbody2D:
   serializedVersion: 4
@@ -541,7 +551,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Damage: 10
   ProjectileSpeedInterval: 0.1
-  shootDelay: 1
+  shootDelay: 0.25
   projectileToFire: {fileID: 0}
   bullets:
   - {fileID: 0}
@@ -565,7 +575,37 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  rotationObject: {fileID: 8213043181752822397}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  rotationObject: {fileID: 0}
   canShoot: 1
 --- !u!95 &8213043182228220109
 Animator:
