@@ -13,9 +13,15 @@ public class ModeSwitch : MonoBehaviour
     [SerializeField] private Color HeavenTorchColor;
     [SerializeField] private List<GameObject> HellObjects = new List<GameObject>();
     [SerializeField] private List<GameObject> HeavenObjects = new List<GameObject>();
+    [SerializeField] private List<GameObject> HellCreatures = new List<GameObject>();
+    [SerializeField] private List<GameObject> HeavenCreatures = new List<GameObject>();
     [SerializeField] private PostProcessVolume Volume;
     private bool isHell = true;
 
+    private void Start()
+    {
+        SwitchToHell();
+    }
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Q))
@@ -43,7 +49,17 @@ public class ModeSwitch : MonoBehaviour
             HeavenObjects[i].SetActive(false);
         }
         globalLight.intensity = 0.7f;
-	}
+
+        for (int i = 0; i < HellCreatures.Count; i++)
+        {
+            HellCreatures[i].SetActive(true);
+            HellCreatures[i].transform.position = HeavenCreatures[i].transform.position;
+        }
+        for (int i = 0; i < HeavenCreatures.Count; i++)
+        {
+            HeavenCreatures[i].SetActive(false);
+        }
+    }
 
     public void SwitchToHeaven()
 	{
@@ -56,5 +72,15 @@ public class ModeSwitch : MonoBehaviour
             HeavenObjects[i].SetActive(true);
         }
         globalLight.intensity = 1.3f;
+
+        for (int i = 0; i < HeavenCreatures.Count; i++)
+        {
+            HeavenCreatures[i].SetActive(true);
+            HeavenCreatures[i].transform.position = HellCreatures[i].transform.position;
+        }
+        for (int i = 0; i < HellCreatures.Count; i++)
+        {
+            HellCreatures[i].SetActive(false);
+        }  
     }
 }
