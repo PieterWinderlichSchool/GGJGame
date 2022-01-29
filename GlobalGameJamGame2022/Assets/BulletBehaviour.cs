@@ -12,19 +12,27 @@ public class BulletBehaviour : MonoBehaviour
     
     public IEnumerator MoveProjectile(float waitTime)
     {
+        Invoke("DisableBullet", 10f);
         while(true)
         {
-            transform.position += new Vector3(bulletSpeed,0,0);
-            if (transform.position.x > 100f||transform.position.x < -100f)
-            {
-                StopCoroutine(MoveProjectile(waitTime));
-                Destroy(this.gameObject);
-                yield break;
-            }
+            transform.position += transform.up * Time.deltaTime * bulletSpeed;
+            //if (transform.position.x > 100f||transform.position.x < -100f)
+            //{
+            //    StopCoroutine(MoveProjectile(waitTime));
+            //    //Destroy(this.gameObject);
+            //    gameObject.SetActive(false);
+            //    yield break;
+            //}
             yield return new WaitForSeconds(waitTime);
         }
         
        
+    }
+
+    public void DisableBullet()
+	{
+        StopCoroutine(MoveProjectile(0));
+        gameObject.SetActive(false);
     }
        
 }

@@ -37,9 +37,5 @@ public class Movement : MonoBehaviour
 
         float rot_z = Mathf.Atan2(diff.y, diff.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(0f, 0f, rot_z - 90);
-
-        //RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
-        //
-        //transform.LookAt(hit.transform.position);
     }
 }
