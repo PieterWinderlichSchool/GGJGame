@@ -10,10 +10,13 @@ public class Movement : MonoBehaviour
     private float verticalMovement = 0f;
     private Vector2 movementDirection;
     [SerializeField] private float movementSpeed;
+    [SerializeField] private Transform objectToRotate;
     [SerializeField] private GameObject Sword;
     [SerializeField] private CombatRangedScript gunScript;
+    [SerializeField] private float currentHealth;
 
-    void FixedUpdate()
+
+	void FixedUpdate()
     {
         float scroll = Input.GetAxis("Mouse ScrollWheel");
 
@@ -48,6 +51,6 @@ public class Movement : MonoBehaviour
         diff.Normalize();
 
         float rot_z = Mathf.Atan2(diff.y, diff.x) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.Euler(0f, 0f, rot_z - 90);
+        objectToRotate.rotation = Quaternion.Euler(0f, 0f, rot_z - 90);
     }
 }
