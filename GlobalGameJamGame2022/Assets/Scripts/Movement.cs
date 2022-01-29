@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Movement : MonoBehaviour
 {
@@ -15,6 +16,8 @@ public class Movement : MonoBehaviour
     [SerializeField] private CombatRangedScript gunScript;
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private float currentHealth;
+    [SerializeField] private float maxHealth;
+    [SerializeField] private List<Image> hearthImages = new List<Image>();
 
 
 	void FixedUpdate()
@@ -52,6 +55,11 @@ public class Movement : MonoBehaviour
         rigidBody.velocity = movementDirection.normalized * movementSpeed;
 
         PlayerRotation();
+
+        if(Input.GetKeyDown(KeyCode.R))
+		{
+            SetHearts();
+		}
     }
 
     void PlayerRotation()
@@ -63,4 +71,22 @@ public class Movement : MonoBehaviour
         float rot_z = Mathf.Atan2(diff.y, diff.x) * Mathf.Rad2Deg;
         objectToRotate.rotation = Quaternion.Euler(0f, 0f, rot_z - 90);
     }
+
+    public void SetHearts()
+	{
+        float _maxHealth = maxHealth;
+        _maxHealth -= 0.5f;
+        for (int i = 0; i < hearthImages.Count; i++)
+		{
+            if(currentHealth <= _maxHealth)
+			{
+                hearthImages[i].color = Color.black;
+			}
+            else if(currentHealth >= _maxHealth)
+			{
+                hearthImages[i].color = Color.white;
+            }
+            _maxHealth -= 0.5f;
+		}
+	}
 }
