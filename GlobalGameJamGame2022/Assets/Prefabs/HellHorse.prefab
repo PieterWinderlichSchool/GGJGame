@@ -15,9 +15,9 @@ GameObject:
   - component: {fileID: 7141699273295687600}
   - component: {fileID: 7141699273295687601}
   - component: {fileID: 7141699273295687602}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: HellHorse
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
