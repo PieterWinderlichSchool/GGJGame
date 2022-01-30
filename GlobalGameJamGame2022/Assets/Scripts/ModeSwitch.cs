@@ -52,12 +52,18 @@ public class ModeSwitch : MonoBehaviour
 
         for (int i = 0; i < HellCreatures.Count; i++)
         {
-            HellCreatures[i].SetActive(true);
-            HellCreatures[i].transform.position = HeavenCreatures[i].transform.position;
+            if (HeavenCreatures[i] != null && HellCreatures[i] != null)
+            {
+                HellCreatures[i].SetActive(true);
+                HellCreatures[i].transform.position = HeavenCreatures[i].transform.position;
+            }
         }
         for (int i = 0; i < HeavenCreatures.Count; i++)
         {
-            HeavenCreatures[i].SetActive(false);
+            if (HeavenCreatures[i] != null && HellCreatures[i] != null)
+            {
+                HeavenCreatures[i].SetActive(false);
+            }
         }
     }
 
@@ -75,12 +81,18 @@ public class ModeSwitch : MonoBehaviour
 
         for (int i = 0; i < HeavenCreatures.Count; i++)
         {
-            HeavenCreatures[i].SetActive(true);
-            HeavenCreatures[i].transform.position = HellCreatures[i].transform.position;
+            if (HeavenCreatures[i] != null && HellCreatures[i] != null)
+            {
+                HeavenCreatures[i].SetActive(true);
+                HeavenCreatures[i].transform.position = HellCreatures[i].transform.position;
+            }
         }
         for (int i = 0; i < HellCreatures.Count; i++)
         {
-            HellCreatures[i].SetActive(false);
+            if (HeavenCreatures[i] != null && HellCreatures[i] != null)
+            {
+                HellCreatures[i].SetActive(false);
+            }
         }  
     }
 }

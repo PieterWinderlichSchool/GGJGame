@@ -1,0 +1,158 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4183499913120345959
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4183499913120345958}
+  m_Layer: 0
+  m_Name: NPC_Enemy Horse
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4183499913120345958
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4183499913120345959}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 6.28, y: 12.04, z: -0.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 4359130821013559090}
+  - {fileID: 6418384453570534894}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &4183499911511306843
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 4183499913120345958}
+    m_Modifications:
+    - target: {fileID: 7141699273295687605, guid: 0a4effcf0ef55d24c98b629e66e7a17e, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7141699273295687605, guid: 0a4effcf0ef55d24c98b629e66e7a17e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7141699273295687605, guid: 0a4effcf0ef55d24c98b629e66e7a17e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7141699273295687605, guid: 0a4effcf0ef55d24c98b629e66e7a17e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7141699273295687605, guid: 0a4effcf0ef55d24c98b629e66e7a17e, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7141699273295687605, guid: 0a4effcf0ef55d24c98b629e66e7a17e, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7141699273295687605, guid: 0a4effcf0ef55d24c98b629e66e7a17e, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7141699273295687605, guid: 0a4effcf0ef55d24c98b629e66e7a17e, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7141699273295687605, guid: 0a4effcf0ef55d24c98b629e66e7a17e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7141699273295687605, guid: 0a4effcf0ef55d24c98b629e66e7a17e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7141699273295687605, guid: 0a4effcf0ef55d24c98b629e66e7a17e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7141699273295687607, guid: 0a4effcf0ef55d24c98b629e66e7a17e, type: 3}
+      propertyPath: m_Name
+      value: HellHorse
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 0a4effcf0ef55d24c98b629e66e7a17e, type: 3}
+--- !u!4 &6418384453570534894 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7141699273295687605, guid: 0a4effcf0ef55d24c98b629e66e7a17e, type: 3}
+  m_PrefabInstance: {fileID: 4183499911511306843}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &4183499912072960771
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 4183499913120345958}
+    m_Modifications:
+    - target: {fileID: 464004230194449457, guid: f48aa80f626dd06458892290dc749250, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 464004230194449457, guid: f48aa80f626dd06458892290dc749250, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 464004230194449457, guid: f48aa80f626dd06458892290dc749250, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 464004230194449457, guid: f48aa80f626dd06458892290dc749250, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 464004230194449457, guid: f48aa80f626dd06458892290dc749250, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 464004230194449457, guid: f48aa80f626dd06458892290dc749250, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 464004230194449457, guid: f48aa80f626dd06458892290dc749250, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 464004230194449457, guid: f48aa80f626dd06458892290dc749250, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 464004230194449457, guid: f48aa80f626dd06458892290dc749250, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 464004230194449457, guid: f48aa80f626dd06458892290dc749250, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 464004230194449457, guid: f48aa80f626dd06458892290dc749250, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 464004230194449460, guid: f48aa80f626dd06458892290dc749250, type: 3}
+      propertyPath: m_Name
+      value: Pegasis
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f48aa80f626dd06458892290dc749250, type: 3}
+--- !u!4 &4359130821013559090 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 464004230194449457, guid: f48aa80f626dd06458892290dc749250, type: 3}
+  m_PrefabInstance: {fileID: 4183499912072960771}
+  m_PrefabAsset: {fileID: 0}
