@@ -187,6 +187,67 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coins: {fileID: 0}
+--- !u!1 &2609917673726774940
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5801659049440782929}
+  m_Layer: 7
+  m_Name: RotatingThing
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5801659049440782929
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2609917673726774940}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 3541593459659471787}
+  m_Father: {fileID: 8213043182228220110}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &6617271866836466491
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3541593459659471787}
+  m_Layer: 7
+  m_Name: DronePos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3541593459659471787
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6617271866836466491}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.567, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5801659049440782929}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8213043180288282702
 GameObject:
   m_ObjectHideFlags: 0
@@ -443,6 +504,7 @@ Transform:
   - {fileID: 8213043181752822397}
   - {fileID: 610836974}
   - {fileID: 873022131}
+  - {fileID: 5801659049440782929}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -513,7 +575,6 @@ MonoBehaviour:
   rigidBody: {fileID: 8213043182228220105}
   movementSpeed: 5
   objectToRotate:
-  - {fileID: 0}
   - {fileID: 8213043181752822397}
   Sword: {fileID: 8213043180288282702}
   gunScript: {fileID: 8213043182228220106}
@@ -529,6 +590,8 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   shooterDrone: {fileID: 0}
+  rotatingThing: {fileID: 5801659049440782929}
+  dronePos: {fileID: 3541593459659471787}
 --- !u!50 &8213043182228220105
 Rigidbody2D:
   serializedVersion: 4
