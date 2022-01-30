@@ -14,7 +14,7 @@ public class EnemyProjectileBehaviour : MonoBehaviour
 
     void Update()
     {
-        if (isFlying = true)
+        if (isFlying == true)
         {
             
             timeFlying += Time.deltaTime;
@@ -59,7 +59,7 @@ public class EnemyProjectileBehaviour : MonoBehaviour
 
     public void resetPosition()
     {
-        transform.position = GetComponentInParent<Transform>().transform.localPosition;
+        transform.localPosition = Vector3.zero;
         gameObject.SetActive(false);
     }
 

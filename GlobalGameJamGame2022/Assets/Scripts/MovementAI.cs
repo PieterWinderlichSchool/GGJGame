@@ -104,6 +104,7 @@ public class MovementAI : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Wall"))
         {
+            Debug.Log("hit");
             InvertSpeed();  
         }
     }
