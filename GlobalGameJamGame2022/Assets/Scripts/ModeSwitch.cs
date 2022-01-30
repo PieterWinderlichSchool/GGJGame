@@ -95,4 +95,9 @@ public class ModeSwitch : MonoBehaviour
             }
         }  
     }
+
+    public List<GameObject> getHeavenEnemies()
+    {
+        return HeavenCreatures;
+    }
 }
