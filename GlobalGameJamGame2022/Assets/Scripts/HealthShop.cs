@@ -13,6 +13,7 @@ public class HealthShop : MonoBehaviour
         {
             coins.changeCoins(-4);
             //health van speler + 1
+            Movement.Player.AddHealth(1);
             Debug.Log("health + 1");
         }
         else
