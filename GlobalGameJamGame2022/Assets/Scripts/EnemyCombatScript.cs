@@ -7,20 +7,22 @@ public class EnemyCombatScript : MonoBehaviour
 
     public float FireSpeed;
 
-    public List<GameObject> projectileList;
+    public List<EnemyProjectileBehaviour> projectileList;
 
     public GameObject player;
-	// Start is called before the first frame update
 
-	private void Start()
-	{
-        player = Movement.Player.gameObject;
-	}
-	public IEnumerator ShootProjectile()
+    public Coroutine routine;
+    // Start is called before the first frame update
+
+    private void Start()
     {
-        
+        player = Movement.Player.gameObject;
+    }
+    public IEnumerator ShootProjectile()
+    {
+
         int index = 0;
-       
+
         while (true)
         {
             if (index >= projectileList.Count)
@@ -28,14 +30,14 @@ public class EnemyCombatScript : MonoBehaviour
                 index = 0;
             }
 
-            projectileList[index].SetActive(true);
-            EnemyProjectileBehaviour enemyBullet = projectileList[index].GetComponent<EnemyProjectileBehaviour>();
-            enemyBullet.StartCoroutine(enemyBullet.MoveProjectile(player));
-          
+            projectileList[index].gameObject.SetActive(true);
+            //EnemyProjectileBehaviour enemyBullet = projectileList[index].GetComponent<EnemyProjectileBehaviour>();
+            projectileList[index].thisRoutine = projectileList[index].StartCoroutine(projectileList[index].MoveProjectile(player));
+
             index++;
-            yield return new WaitForSeconds(FireSpeed); 
+            yield return new WaitForSeconds(FireSpeed);
         }
-        
+
     }
-    
+
 }

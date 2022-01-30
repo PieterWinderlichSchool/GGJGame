@@ -10,7 +10,7 @@ using Random = UnityEngine.Random;
 
 public class MovementAI : MonoBehaviour
 {
-    public enum States{Patrolling, combat, chasing}
+    public enum States { Patrolling, combat, chasing }
 
     public States enemyStates;
 
@@ -41,41 +41,37 @@ public class MovementAI : MonoBehaviour
         {
             transform.position += chooseDirection();
 
-            
+
             yield return new WaitForSeconds(0.1f);
         }
-        
+
     }
 
-    public IEnumerator Combat()
+    public void Combat()
     {
-        StartCoroutine(cScript.ShootProjectile());
-        yield return new WaitForSeconds(0.1f);
+        cScript.routine = StartCoroutine(cScript.ShootProjectile());
+
     }
 
     public IEnumerator Chasing()
     {
         while (true)
         {
-            transform.position = Vector3.MoveTowards(transform.position,player.transform.position, chaseSpeed * Time.deltaTime);
-            
+            transform.position = Vector3.MoveTowards(transform.position, player.transform.position, chaseSpeed * Time.deltaTime);
+
             if (Vector3.Distance(transform.position, player.transform.position) <= 3f)
             {
-            
+
                 SetNewState(States.combat);
                 yield break;
             }
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(0.05f);
 
         }
-        
+
     }
 
-    public void InvertSpeed()
-    {
-        SRenderer.flipX = !SRenderer.flipX;
-        Speed *= -1;
-    }
+
 
     public Vector3 chooseDirection()
     {
@@ -90,16 +86,19 @@ public class MovementAI : MonoBehaviour
                 InvertSpeed();
             }
             int randoNumbero = Mathf.FloorToInt(Random.Range(1, 500));
-            
+
             if (randoNumbero > 200)
             {
                 newPositionDirection.y = Speed;
                 newPositionDirection.x = 0;
-            }else
-            { newPositionDirection.y = 0;
-                newPositionDirection.x = Speed;}
+            }
+            else
+            {
+                newPositionDirection.y = 0;
+                newPositionDirection.x = Speed;
+            }
         }
-        
+
 
         return newPositionDirection;
     }
@@ -108,16 +107,20 @@ public class MovementAI : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Wall"))
         {
-            InvertSpeed();  
+            InvertSpeed();
         }
+        if(other.gameObject.CompareTag("Hitbox"))
+		{
+            Destroy(gameObject);
+		}
     }
-    
+
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
         {
-           
+
             player = other.gameObject;
             SetNewState(States.chasing);
         }
@@ -128,39 +131,59 @@ public class MovementAI : MonoBehaviour
 
         if (other.CompareTag("Player"))
         {
-            //SRenderer.flipX = !SRenderer.flipX;
-            StopCoroutine(cScript.ShootProjectile());
+
+
             SetNewState(States.Patrolling);
         }
+    }
+    public void InvertSpeed()
+    {
+        SRenderer.flipX = !SRenderer.flipX;
+        Speed *= -1;
     }
 
     private void SetNewState(States newState)
     {
-        if(currentRoutine != null)
-		{
+        if (currentRoutine != null)
+        {
+            //Debug.Log(currentRoutine);
             StopCoroutine(currentRoutine);
+
+
         }
+
+        if (cScript.routine != null)
+        {
+            StopCoroutine(cScript.routine);
+        }
+
 
         switch (newState)
         {
-            case  States.Patrolling:
-               currentRoutine =  StartCoroutine(Patrolling());
+            case States.Patrolling:
+                currentRoutine = StartCoroutine(Patrolling());
                 enemyStates = newState;
-                
+
                 break;
-            case States.chasing :
-                currentRoutine =  StartCoroutine(Chasing());
+            case States.chasing:
+                currentRoutine = StartCoroutine(Chasing());
                 enemyStates = newState;
-               
+
                 break;
-            case States.combat :
-                currentRoutine =   StartCoroutine(Combat());
+            case States.combat:
+                Combat();
                 enemyStates = newState;
-           
+
                 break;
             default:
                 Debug.Log("No state found");
                 break;
         }
     }
+
+	private void OnDisable()
+	{
+        currentRoutine = null;
+        StopAllCoroutines();
+	}
 }
