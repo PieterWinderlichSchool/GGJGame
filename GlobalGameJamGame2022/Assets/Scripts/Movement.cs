@@ -22,6 +22,7 @@ public class Movement : MonoBehaviour
 	[SerializeField] private Transform shooterDrone;
 	[SerializeField] private Transform rotatingThing;
 	[SerializeField] private Transform dronePos;
+	[SerializeField] private GameObject deathUI;
 
 	public static Movement Player;
 	private void Awake()
@@ -44,6 +45,13 @@ public class Movement : MonoBehaviour
 			Sword.SetActive(true);
 			gunScript.enabled = false;
 			//Enable sword
+		}
+
+		if(currentHealth <= 0)
+		{
+			deathUI.SetActive(true);
+			this.enabled = false;
+			gunScript.enabled = false;
 		}
 	}
 
