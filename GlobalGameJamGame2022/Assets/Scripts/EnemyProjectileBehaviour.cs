@@ -18,7 +18,6 @@ public class EnemyProjectileBehaviour : MonoBehaviour
         {
 
             timeFlying += Time.deltaTime;
-            Debug.Log(timeFlying);
         }
         else
         {
@@ -78,6 +77,7 @@ public class EnemyProjectileBehaviour : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
 
+            Movement.Player.RemoveHealth(0.5f);
 
             resetPosition();
         }

@@ -109,6 +109,10 @@ public class MovementAI : MonoBehaviour
         {
             InvertSpeed();
         }
+        if(other.gameObject.CompareTag("Hitbox"))
+		{
+            Destroy(gameObject);
+		}
     }
 
 
@@ -176,4 +180,10 @@ public class MovementAI : MonoBehaviour
                 break;
         }
     }
+
+	private void OnDisable()
+	{
+        currentRoutine = null;
+        StopAllCoroutines();
+	}
 }

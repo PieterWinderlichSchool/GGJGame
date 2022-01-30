@@ -7,7 +7,7 @@ public class EnemyCombatScript : MonoBehaviour
 
     public float FireSpeed;
 
-    public List<GameObject> projectileList;
+    public List<EnemyProjectileBehaviour> projectileList;
 
     public GameObject player;
 
@@ -30,9 +30,9 @@ public class EnemyCombatScript : MonoBehaviour
                 index = 0;
             }
 
-            projectileList[index].SetActive(true);
-            EnemyProjectileBehaviour enemyBullet = projectileList[index].GetComponent<EnemyProjectileBehaviour>();
-            enemyBullet.thisRoutine = enemyBullet.StartCoroutine(enemyBullet.MoveProjectile(player));
+            projectileList[index].gameObject.SetActive(true);
+            //EnemyProjectileBehaviour enemyBullet = projectileList[index].GetComponent<EnemyProjectileBehaviour>();
+            projectileList[index].thisRoutine = projectileList[index].StartCoroutine(projectileList[index].MoveProjectile(player));
 
             index++;
             yield return new WaitForSeconds(FireSpeed);
