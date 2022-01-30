@@ -9,6 +9,7 @@ TagManager:
   - Coins
   - Wall
   - EnemyHurtbox
+  - PlayerCollider
   layers:
   - Default
   - TransparentFX
