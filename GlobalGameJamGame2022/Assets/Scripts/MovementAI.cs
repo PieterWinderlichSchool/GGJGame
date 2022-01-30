@@ -18,13 +18,20 @@ public class MovementAI : MonoBehaviour
     public float chaseSpeed;
 
     public float TimeBetweenInverting;
-
+    
     public Coroutine currentRoutine;
     public SpriteRenderer SRenderer;
     public EnemyCombatScript cScript;
     private GameObject player;
+    public bool inCombat = false;
+    public bool isColliding = false;
     // Start is called before the first frame update
     void Start()
+    {
+        
+    }
+
+    private void OnEnable()
     {
         currentRoutine = StartCoroutine(Patrolling());
     }
@@ -47,10 +54,20 @@ public class MovementAI : MonoBehaviour
 
     }
 
-    public void Combat()
+    public IEnumerator Combat()
     {
-        cScript.routine = StartCoroutine(cScript.ShootProjectile());
-
+        while (true)
+        {
+            if (inCombat)
+            {
+                cScript.routine = StartCoroutine(cScript.ShootProjectile());
+                inCombat = false;
+            }
+            
+            yield return new WaitForSeconds(0.05f);
+        } 
+        
+        
     }
 
     public IEnumerator Chasing()
@@ -58,10 +75,10 @@ public class MovementAI : MonoBehaviour
         while (true)
         {
             transform.position = Vector3.MoveTowards(transform.position, player.transform.position, chaseSpeed * Time.deltaTime);
-
+            
             if (Vector3.Distance(transform.position, player.transform.position) <= 3f)
             {
-
+                
                 SetNewState(States.combat);
                 yield break;
             }
@@ -117,24 +134,38 @@ public class MovementAI : MonoBehaviour
 
 
     private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.CompareTag("Player"))
-        {
-
-            player = other.gameObject;
-            SetNewState(States.chasing);
+    {   
+        
+        if (!isColliding)
+        {   
+            
+           
+            if (other.tag == "Player")
+            {
+                
+                player = other.gameObject;
+        
+                SetNewState(States.chasing);
+                isColliding = true;
+            }
+            
         }
+        
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
-
-        if (other.CompareTag("Player"))
+        if (isColliding)
         {
-
-
-            SetNewState(States.Patrolling);
+            
+            if (other.tag == "Player")
+            {
+                Debug.Log(other);
+                isColliding = false;
+                SetNewState(States.Patrolling);
+            }
         }
+
     }
     public void InvertSpeed()
     {
@@ -144,18 +175,12 @@ public class MovementAI : MonoBehaviour
 
     private void SetNewState(States newState)
     {
+     
         if (currentRoutine != null)
         {
-            //Debug.Log(currentRoutine);
-            StopCoroutine(currentRoutine);
-
-
+            StopAllCoroutines();
         }
-
-        if (cScript.routine != null)
-        {
-            StopCoroutine(cScript.routine);
-        }
+        
 
 
         switch (newState)
@@ -163,15 +188,23 @@ public class MovementAI : MonoBehaviour
             case States.Patrolling:
                 currentRoutine = StartCoroutine(Patrolling());
                 enemyStates = newState;
-
+                if (cScript.routine != null)
+                {
+                    StopCoroutine(cScript.routine);
+                }
                 break;
             case States.chasing:
+             
                 currentRoutine = StartCoroutine(Chasing());
                 enemyStates = newState;
-
+                if (cScript.routine != null)
+                {
+                    StopCoroutine(cScript.routine);
+                }
                 break;
             case States.combat:
-                Combat();
+                currentRoutine = StartCoroutine(Combat());
+                inCombat = true;
                 enemyStates = newState;
 
                 break;
