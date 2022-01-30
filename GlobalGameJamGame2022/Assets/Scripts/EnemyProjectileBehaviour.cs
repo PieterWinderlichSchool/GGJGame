@@ -16,13 +16,9 @@ public class EnemyProjectileBehaviour : MonoBehaviour
     {
         if (isFlying = true)
         {
-
             timeFlying += Time.deltaTime;
         }
-        else
-        {
-            Debug.Log("hit");
-        }
+
 
     }
     public IEnumerator MoveProjectile(GameObject Player)
@@ -67,14 +63,14 @@ public class EnemyProjectileBehaviour : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
 
-            Debug.Log("hit");
+           
             resetPosition();
         }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("PlayerCollider"))
         {
 
             Movement.Player.RemoveHealth(0.5f);
