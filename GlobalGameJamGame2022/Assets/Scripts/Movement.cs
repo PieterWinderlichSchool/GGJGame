@@ -20,6 +20,8 @@ public class Movement : MonoBehaviour
 	[SerializeField] private float maxHealth;
 	[SerializeField] private List<Image> hearthImages = new List<Image>();
 	[SerializeField] private Transform shooterDrone;
+	[SerializeField] private Transform rotatingThing;
+	[SerializeField] private Transform dronePos;
 
 	public static Movement Player;
 	private void Awake()
@@ -74,7 +76,8 @@ public class Movement : MonoBehaviour
 
 		PlayerRotation();
 
-		shooterDrone.position = Vector3.Slerp(shooterDrone.position, objectToRotate[1].position, Time.deltaTime * 3);
+		rotatingThing.Rotate(0, 0, Random.Range(0.5f, 1.5f), Space.Self);
+		shooterDrone.position = Vector3.Slerp(shooterDrone.position, dronePos.position, Time.deltaTime * 3);
 	}
 
 	void PlayerRotation()
